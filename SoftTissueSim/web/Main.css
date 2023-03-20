@@ -1,0 +1,109 @@
+@font-face {
+	font-family: "DMSans";
+	src: url("./fonts/DMSans/DMSans-Regular.ttf");
+}
+
+@font-face {
+	font-family: "DMSans-Bold";
+	src: url("./fonts/DMSans/DMSans-Medium.ttf");
+}
+
+* {
+	font-family: "DMSans";
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	height: 100vh;
+	display: flex;
+	background-color: #d9dbd9; /*#9c7863*/
+}
+
+.sidebar {
+	width: 17vw;
+	background-color: #134765;
+}
+
+@media screen and (max-width: 992px) {
+	.page-section {
+		width: 100vw !important;
+	}
+}
+
+.page-section {
+	margin: auto;
+	width: 83vw;
+}
+
+hr {
+	height: 5px;
+	border: none;
+	background-color: #d9dbd9;
+	margin-bottom: 40px !important;
+}
+
+.light-text {
+	text-decoration: none;
+	color: #d9dbd9;
+}
+
+h1,
+h2,
+h3 {
+	font-family: "DMSans-Bold";
+	text-align: center;
+	margin: auto;
+}
+
+/* Experiment Links */
+.nav-link {
+	padding-bottom: 1.5vh !important;
+	margin-bottom: 10px;
+}
+
+.exp-icon {
+	font-size: 18px;
+	display: inline;
+}
+
+.exp-name {
+	font-family: "DMSans-Bold" !important;
+	padding-bottom: 7px;
+	display: inline;
+	height: 0px;
+}
+
+.exp-time {
+	font-size: 12px;
+	height: 0px;
+}
+
+/* Spinner Styles */
+.spinner {
+	margin: auto;
+	background-image: linear-gradient(#134765 35%, #0b8b9e);
+	width: 100px;
+	height: 100px;
+	animation: spinning82341 1.4s linear infinite;
+	text-align: center;
+	border-radius: 50px;
+	filter: blur(1px);
+	box-shadow: 0px -5px 20px 0px #134765, 0px 5px 20px 0px #0b8b9e;
+}
+
+.spinner1 {
+	margin: auto;
+	margin-top: 15px;
+	background-color: #d9dbd9;
+	width: 70px;
+	height: 70px;
+	border-radius: 50px;
+	filter: blur(5px);
+}
+
+@keyframes spinning82341 {
+	to {
+		transform: rotate(360deg);
+	}
+}
