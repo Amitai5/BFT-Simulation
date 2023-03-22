@@ -1,11 +1,14 @@
 from web_server import web_server
 from machine import Pin, I2C
+import ring_light
+import sensors
 import _thread
-import machine
-import time
 
-WIFI_PASSWORD = "8189169000"
-SSID = "Amitai's Hotspot"
+WIFI_PASSWORD = "bENdOVER525"
+SSID = "29DOVER-3"
+
+
+_thread.start_new_thread(sensors.read_force, ())
 
 
 def main():
@@ -17,7 +20,7 @@ def main():
 
     while True:
         server.serve()
-        print("_____________________________________________________________")
+        # print("____________________________________________________________")
 
 
 try:

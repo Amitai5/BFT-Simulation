@@ -1,3 +1,4 @@
+import ring_light
 import network
 import socket
 import time
@@ -65,10 +66,11 @@ class web_server:
 
         while wlan.isconnected() == False:
             print("Waiting for connection...")
-            time.sleep_ms(1000)
+            ring_light.waiting_for_WIFI()
 
         self.LOCAL_IP = wlan.ifconfig()[0]
         print(f"Connected on {self.LOCAL_IP}")
+        ring_light.off()
 
     def __open_socket(self):
         address = (self.LOCAL_IP, 80)
