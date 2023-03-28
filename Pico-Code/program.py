@@ -1,25 +1,24 @@
-from web_server import web_server
-from machine import Pin, I2C
-import ring_light
-import sensors
-import _thread
-
-WIFI_PASSWORD = "bENdOVER525"
-SSID = "29DOVER-3"
+from hit_strength import get_hit_strength
+import accelerometer as force_sensor
+import ring_light, serial, time
 
 
-_thread.start_new_thread(sensors.read_force, ())
+def model_hit(force):
+    ring_light.model_hit(force)
+    print("Hit: " + str(force) + ", Strength: " + str(get_hit_strength(force)))
+    time.sleep(2)
+    ring_light.waiting_for_impact()
 
 
 def main():
-    i2c = I2C(0, sda=Pin(0), scl=Pin(1), freq=400000)
-    server = web_server(SSID, WIFI_PASSWORD)
+    # establish connection to computer
+    serial.connect()
 
-    file = open("web/Home.html", "r")
-    server.set_html(file.read())
+    # start the sensor readings after we set-up the Pi
+    # _thread.start_new_thread(force_sensor.read_force, (model_hit, None))
 
     while True:
-        server.serve()
+        force_sensor.read_force(model_hit, None)
         # print("____________________________________________________________")
 
 

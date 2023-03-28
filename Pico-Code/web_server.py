@@ -1,7 +1,4 @@
-import ring_light
-import network
-import socket
-import time
+import ring_light, network, socket
 
 DEFAULT_HTML = "<!DOCTYPE html><html>Set HTML value in web_server class...</html>"
 
@@ -15,6 +12,7 @@ class web_server:
         self.__open_socket()
         self.root_folder = "web"
         self.html = DEFAULT_HTML
+        ring_light.waiting_for_impact()
 
     def serve(self):
         client = self.connection.accept()[0]
@@ -66,11 +64,10 @@ class web_server:
 
         while wlan.isconnected() == False:
             print("Waiting for connection...")
-            ring_light.waiting_for_WIFI()
+            ring_light.waiting_for_connection()
 
         self.LOCAL_IP = wlan.ifconfig()[0]
         print(f"Connected on {self.LOCAL_IP}")
-        ring_light.off()
 
     def __open_socket(self):
         address = (self.LOCAL_IP, 80)

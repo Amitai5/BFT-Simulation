@@ -1,11 +1,9 @@
+from hit_strength import hit_strength
 import machine, neopixel, time
 
 pixel_count = 16
 lights_pin = machine.Pin(4, machine.Pin.OUT)
 pixels = neopixel.NeoPixel(lights_pin, pixel_count)
-
-pixels.fill((0, 16, 0))
-pixels.write()
 
 
 def waiting_for_impact():
@@ -16,7 +14,23 @@ def waiting_for_impact():
         pixels.write()
 
 
-def waiting_for_WIFI():
+def model_hit(force):
+    pixels.fill(__get_hit_color(force))
+    pixels.write()
+
+
+def __get_hit_color(force):
+    if force < hit_strength.LOW:
+        return (128, 0, 0)
+    elif force < hit_strength.MEDIUM:
+        return (255, 0, 0)
+    elif force < hit_strength.HIGH:
+        return (75, 0, 130)
+    else:
+        return (138, 43, 226)
+
+
+def waiting_for_connection():
     color_chase((0, 255, 0), 50)
     color_chase((0, 0, 0), 50)
 
