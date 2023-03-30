@@ -1,4 +1,4 @@
-import ring_light, select, _thread, time, sys
+import ring_light, select, time, sys
 
 DEVICE_ID = "BT-1826"
 

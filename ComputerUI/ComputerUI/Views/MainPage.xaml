@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+			 x:Class="ComputerUI.Views.MainPage">
+    <Grid ColumnDefinitions="8*,52*,8*,32*" BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource LightGray}}">
+        
+        <StackLayout Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" VerticalOptions="FillAndExpand"
+					 BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}">
+            
+            <Image x:Name="ModelImage" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Source="model_leg_hit.png" />
+            
+            <Button BackgroundColor="{StaticResource Primary}" HorizontalOptions="Start" Margin="20,0,0,20"
+                    Text="Clear Results" Clicked="ClearResultsBTN_Clicked" />
+            
+        </StackLayout>
+
+        <Frame Grid.Column="2" VerticalOptions="FillAndExpand" BorderColor="White" CornerRadius="0"
+               BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}" />
+
+        <ScrollView Grid.Column="3" VerticalOptions="Center" Padding="20,0,20,0">
+            <StackLayout Orientation="Vertical" Spacing="0">
+
+                <Label x:Name="ForceLBL" HorizontalOptions="Center" Margin="0,20,0,100" TextColor="{StaticResource Black}"
+                   HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="40" Text="Force: 50,000 Newtons" />
+
+                <Image HorizontalOptions="Center" Source="crashed_car.png" Margin="100,0,100,0" />
+                <Label x:Name="CarForceLBL" HorizontalOptions="Center" Margin="0,0,0,100" 
+                   HorizontalTextAlignment="Center" FontSize="26" Text="Equal to a car crashing at 32 km/h" />
+
+                <Image HorizontalOptions="Center" Source="boxer.png" Margin="125,0,125,0" />
+                <Label x:Name="PunchForceLBL" HorizontalOptions="Center" Margin="0,0,0,100"
+                   HorizontalTextAlignment="Center" FontSize="26" Text="Equal to five punches by a professional boxer" />
+
+            </StackLayout>
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>
