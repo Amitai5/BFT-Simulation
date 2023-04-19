@@ -46,13 +46,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Maui" Version="1.4.0" />
-	  <PackageReference Include="Plugin.Maui.Audio" Version="1.0.0" />
-	  <PackageReference Include="System.IO.Ports" Version="7.0.0" />
+	  <None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Services\" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="1.4.0" />
+	  <PackageReference Include="Plugin.Maui.Audio" Version="1.0.0" />
+	  <PackageReference Include="System.IO.Ports" Version="7.0.0" />
 	</ItemGroup>
 
 	<PropertyGroup Label="MauiAppAccelerator">

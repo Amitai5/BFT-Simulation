@@ -10,11 +10,14 @@
     ],
     "picowgo.syncFolder": "",
     "picowgo.openOnStart": true,
-    "python.formatting.provider": "black",
+    "python.formatting.provider": "none",
     "cSpell.words": [
         "isconnected",
         "ssid",
         "webserver",
         "wlan"
-    ]
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    }
 }

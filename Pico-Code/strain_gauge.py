@@ -1,27 +1,39 @@
-from hx711 import HX711
-from machine import Pin
-import ring_light, math
+import machine, time, math
+from machine import Pin, ADC
 
-pin_OUT = Pin(12, Pin.IN, pull=Pin.PULL_DOWN)
-pin_SCK = Pin(13, Pin.OUT)
+str_gauge = ADC(Pin(26, Pin.IN, Pin.PULL_UP))  # Connected to pin GP_26
+machine.freq(260000000)
 
-hx711 = HX711(pin_SCK, pin_OUT)
-hx711.set_gain(64)
-hx711.tare()
+DEFAULT_STRAIN = 1123
+HIT_THRESHOLD = 360
+HIT_CONSTANT = 0.1
+AVG_COUNT = 5
 
-# store the noise value it is usually at so we can negate it later
-default_weight = abs(hx711.read_average(20))
-HIT_THRESHOLD = 0.02
+
+def start(callback_func, discard):
+    while True:
+        read_force(callback_func, None)
+    # _thread.start_new_thread(read_force, (callback_func, None))
+
+
+def get_strain():
+    return abs(DEFAULT_STRAIN - int(round(str_gauge.read_u16() >> 4)))
+
+
+# create a function to get the average over a number of readings (in terms of powers of two)
+def get_avg_strain(pow):
+    avg_force = int(0)
+    count = 2**pow
+    counter = 0
+
+    while counter < count:
+        avg_force += get_strain()
+        counter += 1
+    return avg_force >> pow
 
 
 def read_force(callback_func, none):
-    ring_light.waiting_for_impact()
-    while True:
-        value = hx711.read_average() + default_weight
-        if is_significant(value):
-            callback_func(math.fabs(value))
-
-
-def is_significant(value):
-    diff = default_weight * HIT_THRESHOLD
-    return value > diff or value < -diff
+    avg_strain = get_avg_strain(AVG_COUNT)
+    print(avg_strain)
+    if avg_strain > HIT_THRESHOLD:
+        callback_func(avg_strain)

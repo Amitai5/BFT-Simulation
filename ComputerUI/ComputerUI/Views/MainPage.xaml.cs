@@ -1,38 +1,45 @@
-﻿using System.IO.Ports;
+﻿using ComputerUI.Servies;
 
 namespace ComputerUI.Views;
 
 public partial class MainPage : ContentPage
 {
-    SerialPort ModelCOMPort;
+    private ModelCOMService modelService;
 
     public MainPage()
     {
         InitializeComponent();
 
-        ModelCOMPort = new SerialPort("COM3")
-        {
-            DtrEnable = true,
-            RtsEnable = true,
-            BaudRate = 9600
-        };
-
-        ModelCOMPort.DataReceived += SerialPort_DataReceived;
-        ModelCOMPort.Open();
+        modelService = new ModelCOMService();
+        modelService.OnConnected += Model_OnConnected;
+        modelService.DataReceived += ModelService_DataReceived;
     }
 
-    private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+    private void ModelService_DataReceived(double force)
     {
-        string data = ModelCOMPort.ReadLine();
-        double force = double.Parse(data[..data.IndexOf(';')]);
-
-        Console.WriteLine("Force: " + force);
         Application.Current.MainPage.Dispatcher.Dispatch(() => UpdateForces(force));
     }
 
-    private void ClearResultsBTN_Clicked(object sender, EventArgs e)
+    private void Model_OnConnected()
     {
-        UpdateForces(0);
+        Application.Current.MainPage.Dispatcher.Dispatch(() =>
+        {
+            LoadingView.IsVisible = false;
+            SpacingFrame.IsVisible = true;
+            ModelLegView.IsVisible = true;
+            SidePanelView.IsVisible = true;
+        });
+    }
+
+    private void ModelConnectBTN_Clicked(object sender, EventArgs e)
+    {
+        ModelConnectBTN.IsVisible = false;
+        ModelConnectBTN.VerticalOptions = LayoutOptions.End;
+
+        LoadingLayout.IsVisible = true;
+        LoadingLayout.VerticalOptions = LayoutOptions.CenterAndExpand;
+
+        modelService.ConnectToModel();
     }
 
     private void UpdateForces(double force)
@@ -50,5 +57,10 @@ public partial class MainPage : ContentPage
         PunchForceLBL.Text = $"Equal to {Math.Round(force / 500)} punches by a professional boxer";
         CarForceLBL.Text = $"Equal to a car crashing at {Math.Round(force / 100)} km/h";
         ForceLBL.Text = $"Force: {Math.Round(force)} Newtons";
+    }
+
+    private void ClearResultsBTN_Clicked(object sender, EventArgs e)
+    {
+        UpdateForces(0);
     }
 }
