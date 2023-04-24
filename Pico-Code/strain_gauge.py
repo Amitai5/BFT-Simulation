@@ -4,10 +4,10 @@ from machine import Pin, ADC
 str_gauge = ADC(Pin(26, Pin.IN, Pin.PULL_UP))  # Connected to pin GP_26
 machine.freq(260000000)
 
-DEFAULT_STRAIN = 1123
+DEFAULT_STRAIN = 0
 HIT_THRESHOLD = 360
 HIT_CONSTANT = 0.1
-AVG_COUNT = 5
+AVG_COUNT = 3
 
 
 def start(callback_func, discard):
@@ -17,7 +17,7 @@ def start(callback_func, discard):
 
 
 def get_strain():
-    return abs(DEFAULT_STRAIN - int(round(str_gauge.read_u16() >> 4)))
+    return abs(DEFAULT_STRAIN - int(round(str_gauge.read_u16())))
 
 
 # create a function to get the average over a number of readings (in terms of powers of two)

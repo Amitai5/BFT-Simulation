@@ -23,8 +23,12 @@ namespace ComputerUI.Servies
         private void ModelCOMPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string data = ModelCOMPort.ReadLine();
-            double force = double.Parse(data[..data.IndexOf(';')]);
-            DataReceived?.Invoke(force);
+            if (data.StartsWith(">>"))
+            {
+                data = data[2..].Trim(); // Remove the '>>'
+                double force = double.Parse(data[..data.IndexOf(';')]);
+                DataReceived?.Invoke(force);
+            }
         }
 
         public void ConnectToModel()
