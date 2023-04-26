@@ -6,7 +6,7 @@
 [![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
 
 ## Table of contents
-1. [Project Overview](https://github.com/Amitai5/BFT-Simulation/blob/main/README.md#project-overview)
+1. [Project Overview](https://github.com/Amitai5/BFT-Simulation#project-overview)
 2. [Acknowledgements](https://github.com/Amitai5/BFT-Simulation/blob/main/README.md#acknowledgements)
 3. [License](https://github.com/Amitai5/BFT-Simulation/blob/main/README.md#license)
 
