@@ -6,9 +6,9 @@
 [![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
 
 ## Table of contents
-1. [Project Overview](https://github.com/Amitai5/BFT-Simulation/edit/main/README.md#ProjectOverview)
-2. [Acknowledgements](https://github.com/Amitai5/BFT-Simulation/edit/main/README.md#Acknowledgements)
-3. [License](https://github.com/Amitai5/BFT-Simulation/edit/main/README.md#License)
+1. [Project Overview](https://github.com/Amitai5/BFT-Simulation/blob/main/README.md#project-overview)
+2. [Acknowledgements](https://github.com/Amitai5/BFT-Simulation/blob/main/README.md#acknowledgements)
+3. [License](https://github.com/Amitai5/BFT-Simulation/blob/main/README.md#license)
 
 ## Project Overview
 The COVID-19 pandemic exacerbated the incidence rate of domestic violence worldwide.  Despite the prevalence of domestic violence, there is no proven effective method of reducing recidivism rates among abusers. This project focused on the creation of a new type of reformative procedure to reduce the global incidence of domestic violence. By creating a demonstrative model capable of simulating the effects of blunt trauma, we created a new type of batterer intervention program.
