@@ -1,4 +1,14 @@
 # THE DAMAGE BEHIND THE BRUISES
+![Raspberry Pi](https://img.shields.io/badge/-RaspberryPi-C51A4A?style=for-the-badge&logo=Raspberry-Pi)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
+[![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
+
+## Table of contents
+1. [Project Overview](https://github.com/Amitai5/BFT-Simulation/edit/main/README.md#ProjectOverview)
+2. [Acknowledgements](https://github.com/Amitai5/BFT-Simulation/edit/main/README.md#Acknowledgements)
+3. [License](https://github.com/Amitai5/BFT-Simulation/edit/main/README.md#License)
 
 ## Project Overview
 The COVID-19 pandemic exacerbated the incidence rate of domestic violence worldwide.  Despite the prevalence of domestic violence, there is no proven effective method of reducing recidivism rates among abusers. This project focused on the creation of a new type of reformative procedure to reduce the global incidence of domestic violence. By creating a demonstrative model capable of simulating the effects of blunt trauma, we created a new type of batterer intervention program.
