@@ -4,7 +4,7 @@ namespace ComputerUI.Servies
 {
     public class ModelCOMService
     {
-        public const int COMReadTimeoutMS = 2000;
+        public const int COMReadTimeoutMS = 1000;
         public const string ModelID = "BT-1826";
 
         public bool IsConnected { get; private set; } = false;

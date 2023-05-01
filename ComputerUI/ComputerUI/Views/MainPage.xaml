@@ -3,7 +3,7 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
 			 x:Class="ComputerUI.Views.MainPage">
-	<Grid ColumnDefinitions="8*,52*,8*,32*" BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource LightGray}}">
+	<Grid ColumnDefinitions="8*,52*,32*" BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource LightGray}}" ColumnSpacing="0">
 
 		<StackLayout x:Name="LoadingView" Grid.Column="0" Grid.ColumnSpan="4" IsVisible="True"
 					 BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}">
@@ -15,16 +15,30 @@
 				<Label HorizontalOptions="Center" TextColor="{StaticResource Black}" FontAttributes="Bold" FontSize="26" Text="Connecting to model..." />
 			</StackLayout>
 		</StackLayout>
-		
-		<StackLayout x:Name="ModelLegView" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" VerticalOptions="FillAndExpand"
-					 BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}" IsVisible="False">
-			
-			<Image x:Name="ModelImage" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Source="model_leg_hit.png" />
-			
-			<Button BackgroundColor="{StaticResource Primary}" HorizontalOptions="Start" Margin="20,0,0,20"
-					Text="Clear Results" Clicked="ClearResultsBTN_Clicked" />
-			
-		</StackLayout>
+
+		<Grid x:Name="ModelLegView" Grid.Column="0" Grid.ColumnSpan="2" ColumnDefinitions="50,*,*,*,*,*,*,50" RowDefinitions="*,*,*,*,*,*,*" 
+			  VerticalOptions="FillAndExpand" ColumnSpacing="20" IsVisible="False"
+			  BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}">
+
+			<StackLayout x:Name="Level1" Grid.Column="1" Grid.Row="6" BackgroundColor="{AppThemeBinding Default={StaticResource Primary}}" />
+			<Image Source="apple.png" IsEnabled="False" VerticalOptions="End" Aspect="AspectFit" Grid.Column="1" Grid.Row="5" HeightRequest="75" Margin="10" />
+
+			<StackLayout x:Name="Level2" Grid.Column="2" Grid.Row="5" Grid.RowSpan="4" BackgroundColor="{AppThemeBinding Default={StaticResource Primary}}" />
+			<Image Source="apple.png" VerticalOptions="End" Aspect="AspectFit" Grid.Column="2" Grid.Row="4" HeightRequest="75" Margin="10" />
+
+			<StackLayout x:Name="Level3" Grid.Column="3" Grid.Row="4" Grid.RowSpan="5" BackgroundColor="{AppThemeBinding Default={StaticResource Primary}}" />
+			<Image Source="apple.png" VerticalOptions="End" Aspect="AspectFit" Grid.Column="3" Grid.Row="3" HeightRequest="75" Margin="10" />
+
+			<StackLayout x:Name="Level4" Grid.Column="4" Grid.Row="3" Grid.RowSpan="6" BackgroundColor="{AppThemeBinding Default={StaticResource Gray}}" />
+			<Image Source="apple.png" VerticalOptions="End" Aspect="AspectFit" Grid.Column="4" Grid.Row="2" HeightRequest="75" Margin="10" />
+
+			<StackLayout x:Name="Level5" Grid.Column="5" Grid.Row="2" Grid.RowSpan="6" BackgroundColor="{AppThemeBinding Default={StaticResource Gray}}" />
+			<Image Source="apple.png" VerticalOptions="End" Aspect="AspectFit" Grid.Column="5" Grid.Row="1" HeightRequest="75" Margin="10" />
+
+			<StackLayout x:Name="Level6" Grid.Column="6" Grid.Row="1" Grid.RowSpan="6" BackgroundColor="{AppThemeBinding Default={StaticResource Gray}}" />
+			<Image Source="apple.png" VerticalOptions="End" Aspect="AspectFit" Grid.Column="6" Grid.Row="0" HeightRequest="75" Margin="10" />
+
+		</Grid>
 
 		<Frame x:Name="SpacingFrame" Grid.Column="2" VerticalOptions="FillAndExpand" BorderColor="White" CornerRadius="0"
 			   BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}" IsVisible="False" />

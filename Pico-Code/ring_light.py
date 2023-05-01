@@ -31,8 +31,8 @@ def __get_hit_color(force):
 
 
 def waiting_for_connection():
-    color_chase((0, 255, 0), 50)
-    color_chase((0, 0, 0), 50)
+    color_chase((0, 255, 0), 25)
+    color_chase((0, 0, 0), 25)
 
 
 def wheel(pos):

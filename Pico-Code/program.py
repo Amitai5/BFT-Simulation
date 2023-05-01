@@ -1,18 +1,16 @@
-import strain_gauge as force_sensor
-import ring_light, com_serial, time
+import ring_light, com_serial, machine, time, fsr
 
 
 def model_hit(force):
     ring_light.model_hit(force)
-    print(str(force) + ";")
-    time.sleep(2)
-    ring_light.waiting_for_impact()
+    print(">>" + str(force) + ";")
+    time.sleep(10)
 
 
 def main():
-    # establish connection to computer
-    # com_serial.connect()
-    force_sensor.start(model_hit, None)
+    print("Running...")
+    com_serial.connect()
+    fsr.start(model_hit, None)
 
 
 try:
