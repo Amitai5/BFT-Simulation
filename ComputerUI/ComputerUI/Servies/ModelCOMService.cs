@@ -4,7 +4,7 @@ namespace ComputerUI.Servies
 {
     public class ModelCOMService
     {
-        public const int COMReadTimeoutMS = 1000;
+        public const int COMReadTimeoutMS = 1500;
         public const string ModelID = "BT-1826";
 
         public bool IsConnected { get; private set; } = false;
@@ -64,7 +64,7 @@ namespace ComputerUI.Servies
             }
 
             // Tell the model we have recieved its message
-            ModelCOMPort.WriteLine(ModelID + "\n");
+            ModelCOMPort.WriteLine(ModelID);
             Thread.Sleep(COMReadTimeoutMS);
 
             // Raise the event and also subscribe to the data recieved event

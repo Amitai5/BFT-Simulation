@@ -58,7 +58,7 @@ public partial class MainPage : ContentPage
             levels[i].BackgroundColor = (Color)test;
         }
 
-        for (int i = 0; force > i * 25; i++)
+        for (int i = 0; i < levels.Count && force > i * 25; i++)
         {
             App.Current.Resources.TryGetValue("Primary", out object test);
             levels[i].BackgroundColor = (Color)test;

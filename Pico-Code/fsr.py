@@ -4,8 +4,11 @@ from machine import Pin, ADC
 str_gauge = ADC(Pin(26, Pin.IN, Pin.PULL_UP))  # Connected to pin GP_26
 machine.freq(260000000)
 
-NEWTON_CONSTANT = 4.44822
-HIT_THRESHOLD = 1.60  # this is 5lbs as a voltage from the sensor
+# values from Desmos function: https://www.desmos.com/calculator/fxz5psayfz
+CALIBRATION_SCALE_A = -2666.78
+CALIBRATION_SCALE_B = 6972.36
+
+HIT_THRESHOLD = 0.5  # this is a reading of approximately zero
 MAX_VOLTAGE = 3.33
 AVG_COUNT = 3
 
@@ -34,13 +37,12 @@ def get_avg_strain(pow):
 
 def strain_to_force(voltage):
     resistance = (MAX_VOLTAGE / voltage) * 1000 - 1000
-    return math.pow(10, (resistance - 1486.04) / -882.866) * NEWTON_CONSTANT
+    return math.pow(10, resistance - CALIBRATION_SCALE_B) / CALIBRATION_SCALE_A
 
 
 def read_force(callback_func, none):
     avg_strain = get_avg_strain(AVG_COUNT)
-    voltage = MAX_VOLTAGE * (avg_strain / 65535)
-    print(str(voltage) + "*")
+    voltage = MAX_VOLTAGE * (avg_strain / 65535.0)
 
     if voltage > HIT_THRESHOLD:
         force = strain_to_force(voltage)

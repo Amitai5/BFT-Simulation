@@ -1,15 +1,13 @@
 import ring_light, select, time, sys
 from machine import Pin, UART
 
-TIME_MS = 15000
-
 DEVICE_ID = "BT-1826"
-serial = UART(0, 9600)
+serial = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1))
 led = Pin("LED", Pin.OUT)
-led.toggle()
+led.on()
 
 
-def __has_data():
+def has_data():
     return select.select(
         [
             sys.stdin,
@@ -20,11 +18,18 @@ def __has_data():
     )[0]
 
 
-def connect():
-    start_time = time.ticks_ms()
-    end_time = start_time + TIME_MS
+def check_connection():
+    if not has_data():
+        return False
 
-    while time.ticks_ms() < end_time:
-        # ring_light.waiting_for_connection()
+    activation_code = str(sys.stdin.buffer.read(7).decode("utf-8"))
+    if activation_code.startswith(DEVICE_ID):
+        return True
+    return False
+
+
+def connect():
+    while check_connection() == False:
+        ring_light.waiting_for_connection()
         print(DEVICE_ID + ", time: " + str(time.time()))
-    led.toggle()
+    led.off()

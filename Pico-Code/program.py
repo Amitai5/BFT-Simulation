@@ -8,8 +8,7 @@ def model_hit(force):
 
 
 def main():
-    print("Running...")
-    com_serial.connect()
+    # com_serial.connect()
     fsr.start(model_hit, None)
 
 
