@@ -4,8 +4,11 @@ namespace ComputerUI.Views;
 
 public partial class MainPage : ContentPage
 {
+    private List<StackLayout> sidePanelViews = new List<StackLayout>();
+    private List<StackLayout> levels = new List<StackLayout>();
+
+    public const double BAR_SCALE_VALUE = 1847;
     private ModelCOMService modelService;
-    List<StackLayout> levels = new List<StackLayout>();
 
     public MainPage()
     {
@@ -21,6 +24,13 @@ public partial class MainPage : ContentPage
         levels.Add(Level4);
         levels.Add(Level5);
         levels.Add(Level6);
+
+        sidePanelViews.Add(SidePanelView1);
+        sidePanelViews.Add(SidePanelView2);
+        sidePanelViews.Add(SidePanelView3);
+        sidePanelViews.Add(SidePanelView4);
+        sidePanelViews.Add(SidePanelView5);
+        sidePanelViews.Add(SidePanelView6);
     }
 
     private void ModelService_DataReceived(double force)
@@ -35,7 +45,7 @@ public partial class MainPage : ContentPage
             LoadingView.IsVisible = false;
             SpacingFrame.IsVisible = true;
             ModelLegView.IsVisible = true;
-            SidePanelView.IsVisible = true;
+            SidePanel.IsVisible = true;
         });
     }
 
@@ -48,6 +58,7 @@ public partial class MainPage : ContentPage
         LoadingLayout.VerticalOptions = LayoutOptions.CenterAndExpand;
 
         modelService.ConnectToModel();
+        UpdateForces(0);
     }
 
     private void UpdateForces(double force)
@@ -56,23 +67,26 @@ public partial class MainPage : ContentPage
         {
             App.Current.Resources.TryGetValue("Gray", out object test);
             levels[i].BackgroundColor = (Color)test;
+            sidePanelViews[i].IsVisible = false;
         }
 
-        for (int i = 0; i < levels.Count && force > i * 25; i++)
+        int index = 0;
+        for (; index < levels.Count && force > index * BAR_SCALE_VALUE; index++)
         {
             App.Current.Resources.TryGetValue("Primary", out object test);
-            levels[i].BackgroundColor = (Color)test;
+            levels[index].BackgroundColor = (Color)test;
+        }
+
+        // Set the side panel
+        if (index >= 1)
+        {
+            sidePanelViews[index - 1].IsVisible = true;
         }
 
         if (force == 0)
         {
-            PunchForceLBL.Text = "Equal to ## punches by a professional boxer";
-            CarForceLBL.Text = "Equal to a car crashing at ## km/h";
             ForceLBL.Text = "Force: #### Newtons";
         }
-
-        PunchForceLBL.Text = $"Equal to {Math.Round(force / 500)} punches by a professional boxer";
-        CarForceLBL.Text = $"Equal to a car crashing at {Math.Round(force / 100)} km/h";
         ForceLBL.Text = $"Force: {Math.Round(force)} Newtons";
     }
 }

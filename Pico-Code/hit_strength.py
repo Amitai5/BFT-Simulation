@@ -1,8 +1,8 @@
 class hit_strength:
-    LOW = 2
-    MEDIUM = 4
-    HIGH = 8
-    CRITICAL = 16
+    LOW = 2771
+    MEDIUM = 5542
+    HIGH = 8313
+    CRITICAL = 11085
 
 
 def get_hit_strength(force):

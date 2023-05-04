@@ -21,44 +21,70 @@
 			  BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}">
 
 			<StackLayout x:Name="Level1" Grid.Column="1" Grid.Row="6" BackgroundColor="{AppThemeBinding Default={StaticResource Primary}}" />
-			<Image Source="apple.png" IsEnabled="False" VerticalOptions="End" Aspect="AspectFit" Grid.Column="1" Grid.Row="5" HeightRequest="75" Margin="10" />
+			<Image Source="bike.png" IsEnabled="False" VerticalOptions="End" Aspect="AspectFit" Grid.Column="1" Grid.Row="5" HeightRequest="75" Margin="10" />
 
 			<StackLayout x:Name="Level2" Grid.Column="2" Grid.Row="5" Grid.RowSpan="4" BackgroundColor="{AppThemeBinding Default={StaticResource Primary}}" />
-			<Image Source="apple.png" VerticalOptions="End" Aspect="AspectFit" Grid.Column="2" Grid.Row="4" HeightRequest="75" Margin="10" />
+			<Image Source="soccer.png" VerticalOptions="End" Aspect="AspectFit" Grid.Column="2" Grid.Row="4" HeightRequest="100" Margin="10" />
 
 			<StackLayout x:Name="Level3" Grid.Column="3" Grid.Row="4" Grid.RowSpan="5" BackgroundColor="{AppThemeBinding Default={StaticResource Primary}}" />
-			<Image Source="apple.png" VerticalOptions="End" Aspect="AspectFit" Grid.Column="3" Grid.Row="3" HeightRequest="75" Margin="10" />
+			<Image Source="boxer.png" VerticalOptions="End" Aspect="AspectFit" Grid.Column="3" Grid.Row="3" HeightRequest="100" Margin="10" />
 
 			<StackLayout x:Name="Level4" Grid.Column="4" Grid.Row="3" Grid.RowSpan="6" BackgroundColor="{AppThemeBinding Default={StaticResource Gray}}" />
-			<Image Source="apple.png" VerticalOptions="End" Aspect="AspectFit" Grid.Column="4" Grid.Row="2" HeightRequest="75" Margin="10" />
+			<Image Source="kick.png" VerticalOptions="End" Aspect="AspectFit" Grid.Column="4" Grid.Row="2" HeightRequest="75" Margin="10" />
 
 			<StackLayout x:Name="Level5" Grid.Column="5" Grid.Row="2" Grid.RowSpan="6" BackgroundColor="{AppThemeBinding Default={StaticResource Gray}}" />
-			<Image Source="apple.png" VerticalOptions="End" Aspect="AspectFit" Grid.Column="5" Grid.Row="1" HeightRequest="75" Margin="10" />
+			<Image Source="motorcycle.png" VerticalOptions="End" Aspect="AspectFit" Grid.Column="5" Grid.Row="1" HeightRequest="75" Margin="10" />
 
 			<StackLayout x:Name="Level6" Grid.Column="6" Grid.Row="1" Grid.RowSpan="6" BackgroundColor="{AppThemeBinding Default={StaticResource Gray}}" />
-			<Image Source="apple.png" VerticalOptions="End" Aspect="AspectFit" Grid.Column="6" Grid.Row="0" HeightRequest="75" Margin="10" />
+			<Image Source="car.png" VerticalOptions="End" Aspect="AspectFit" Grid.Column="6" Grid.Row="0" HeightRequest="75" Margin="10" />
 
 		</Grid>
 
 		<Frame x:Name="SpacingFrame" Grid.Column="2" VerticalOptions="FillAndExpand" BorderColor="White" CornerRadius="0"
 			   BackgroundColor="{AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}" IsVisible="False" />
 
-		<ScrollView x:Name="SidePanelView" Grid.Column="3" VerticalOptions="Center" Padding="20,0,20,0" IsVisible="False">
-			<StackLayout Orientation="Vertical" Spacing="0">
+		<StackLayout x:Name="SidePanel" Grid.Column="3" VerticalOptions="Center" Padding="50,0,50,0" IsVisible="False" Orientation="Vertical" Spacing="0">
 
-				<Label x:Name="ForceLBL" HorizontalOptions="Center" Margin="0,20,0,100" TextColor="{StaticResource Black}"
-				   HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="40" Text="Force: 50,000 Newtons" />
+			<Label x:Name="ForceLBL" HorizontalOptions="Center" Margin="0,20,0,100" TextColor="{StaticResource Black}"
+				   HorizontalTextAlignment="Center" VerticalTextAlignment="Start" FontAttributes="Bold" FontSize="40" Text="Force: 50,000 Newtons" />
 
-				<Image HorizontalOptions="Center" Source="crashed_car.png" Margin="100,0,100,0" />
-				<Label x:Name="CarForceLBL" HorizontalOptions="Center" Margin="0,0,0,100" 
-				   HorizontalTextAlignment="Center" FontSize="26" Text="Equal to a car crashing at 32 km/h" />
-
-				<Image HorizontalOptions="Center" Source="boxer.png" Margin="125,0,125,0" />
-				<Label x:Name="PunchForceLBL" HorizontalOptions="Center" Margin="0,0,0,100"
-				   HorizontalTextAlignment="Center" FontSize="26" Text="Equal to five punches by a professional boxer" />
-
+			<StackLayout x:Name="SidePanelView1" Orientation="Vertical" Spacing="10" IsVisible="False">
+				<Image HorizontalOptions="Center" Source="bike.png" Margin="125,0,125,0" />
+				<Label HorizontalOptions="Center" Margin="0,0,0,100" HorizontalTextAlignment="Center" 
+					   FontSize="26" Text="Equal to a person riding over your foot with a bike" />
 			</StackLayout>
-		</ScrollView>
+
+			<StackLayout x:Name="SidePanelView2" Orientation="Vertical" Spacing="10" IsVisible="False">
+				<Image HorizontalOptions="Center" Source="soccer.png" Margin="125,0,125,0" />
+				<Label HorizontalOptions="Center" Margin="0,0,0,100" HorizontalTextAlignment="Center" 
+					   FontSize="26" Text="Equal to a soccer ball being kicked" />
+			</StackLayout>
+
+			<StackLayout x:Name="SidePanelView3" Orientation="Vertical" Spacing="10" IsVisible="False">
+				<Image HorizontalOptions="Center" Source="boxer.png" Margin="125,0,125,0" />
+				<Label HorizontalOptions="Center" Margin="0,0,0,100" HorizontalTextAlignment="Center" 
+					   FontSize="26" Text="Equal to a heavyweight boxer punch" />
+			</StackLayout>
+
+			<StackLayout x:Name="SidePanelView4" Orientation="Vertical" Spacing="10" IsVisible="False">
+				<Image HorizontalOptions="Center" Source="kick.png" Margin="125,0,125,0" />
+				<Label HorizontalOptions="Center" Margin="0,0,0,100" HorizontalTextAlignment="Center" 
+					   FontSize="26" Text="Equal to a professional, martial arts kick" />
+			</StackLayout>
+
+			<StackLayout x:Name="SidePanelView5" Orientation="Vertical" Spacing="10" IsVisible="False">
+				<Image HorizontalOptions="Center" Source="motorcycle.png" Margin="125,0,125,0" />
+				<Label HorizontalOptions="Center" Margin="0,0,0,100" HorizontalTextAlignment="Center" 
+					   FontSize="26" Text="Equal to being crushed by a motorcycle driving at 20km/h" />
+			</StackLayout>
+
+			<StackLayout x:Name="SidePanelView6" Orientation="Vertical" Spacing="10" IsVisible="False">
+				<Image HorizontalOptions="Center" Source="car.png" Margin="125,0,125,0" />
+				<Label HorizontalOptions="Center" Margin="0,0,0,100" HorizontalTextAlignment="Center" 
+					   FontSize="26" Text="Equal to being crushed by a car driving at 10km/h" />
+			</StackLayout>
+
+		</StackLayout>
 
 	</Grid>
 

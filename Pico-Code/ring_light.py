@@ -7,11 +7,8 @@ pixels = neopixel.NeoPixel(lights_pin, pixel_count)
 
 
 def waiting_for_impact():
-    for j in range(255):
-        for i in range(pixel_count):
-            rc_index = (i * 256 // pixel_count) + j
-            pixels[i] = wheel(rc_index & 255)
-        pixels.write()
+    pixels.fill((255, 255, 255))
+    pixels.write()
 
 
 def model_hit(force):

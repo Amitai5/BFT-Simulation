@@ -59,8 +59,8 @@ namespace ComputerUI.Servies
 
             if (ModelCOMPort == null)
             {
-                // TODO: Send error message
-                return;
+                // Quit the application if you can't find a COM Port (change this later)
+                App.Current.Quit();
             }
 
             // Tell the model we have recieved its message
